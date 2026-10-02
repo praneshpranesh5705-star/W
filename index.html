@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08090b" />
+  <title>TSAR BOMBA — Built for More</title>
+  <meta name="description" content="A cinematic scroll-driven luxury watch experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="TSAR BOMBA home">
+      <span class="brand-mark">TB</span>
+      <span>TSAR BOMBA</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#craft">Craft</a>
+      <a href="#movement">Movement</a>
+      <a href="#specs">Specifications</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Discover</a>
+  </header>
+
+  <main id="top">
+    <section class="hero-scroll" aria-label="Scroll-driven watch presentation">
+      <div class="hero-sticky">
+        <div class="hero-glow glow-one"></div>
+        <div class="hero-glow glow-two"></div>
+        <div class="grid-floor"></div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">AUTOMATIC SKELETON · LIMITED SERIES</p>
+          <h1>Built for<br><em>More.</em></h1>
+          <p class="hero-lead">A mechanical sculpture engineered to turn every second into a statement.</p>
+          <div class="scroll-hint"><span></span> Scroll to dismantle</div>
+        </div>
+
+        <div class="watch-stage" aria-hidden="true">
+          <div class="watch-aura"></div>
+          <img id="assembled" class="watch assembled" src="assets/watch-assembled.png" alt="" />
+          <img id="exploded" class="watch exploded" src="assets/watch-exploded.png" alt="" />
+          <div class="stage-caption" id="stageCaption">
+            <span>01</span>
+            ASSEMBLED FORM
+          </div>
+        </div>
+
+        <div class="progress-rail">
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <div class="progress-label"><span id="progressPercent">0</span>%</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-band" id="craft">
+      <div>
+        <p class="eyebrow">THE OBJECT</p>
+        <h2>Luxury you can<br><em>see working.</em></h2>
+      </div>
+      <p>Every layer exists for a reason. The case, skeleton dial and automatic movement are composed as one architectural object—then revealed piece by piece as you move through the experience.</p>
+    </section>
+
+    <section class="feature" id="movement">
+      <div class="feature-image">
+        <img src="assets/watch-assembled.png" alt="Rose-gold and blue skeleton luxury watch" loading="lazy" />
+      </div>
+      <div class="feature-copy">
+        <p class="eyebrow">MECHANICAL HEART</p>
+        <h2>Precision, exposed.</h2>
+        <p>The skeleton construction puts the mechanical character front and center. Blue bridges frame the moving gear train while the rose-gold architecture gives the case its unmistakable presence.</p>
+        <div class="stat-grid">
+          <div><strong>32</strong><span>Jewels</span></div>
+          <div><strong>1</strong><span>Automatic calibre</span></div>
+          <div><strong>∞</strong><span>Mechanical motion</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="specs" id="specs">
+      <div class="section-head">
+        <p class="eyebrow">SPECIFICATIONS</p>
+        <h2>The architecture<br><em>of time.</em></h2>
+      </div>
+      <div class="spec-list">
+        <div><span>Case</span><strong>Rose-gold tone / tonneau</strong></div>
+        <div><span>Dial</span><strong>Open-work skeleton</strong></div>
+        <div><span>Strap</span><strong>Deep-blue integrated rubber</strong></div>
+        <div><span>Movement</span><strong>Automatic mechanical</strong></div>
+        <div><span>Presentation</span><strong>Exploded X-axis construction</strong></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-card">
+        <p class="eyebrow">TSAR BOMBA</p>
+        <h2>Wear the<br><em>mechanism.</em></h2>
+        <p>Designed for people who want the engineering to be part of the aesthetic.</p>
+        <a class="button" href="#top">Replay the experience <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>TSAR BOMBA</span>
+    <span>BUILT FOR MORE</span>
+    <span>© 2026</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
