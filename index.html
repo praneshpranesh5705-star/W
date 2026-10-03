@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#08090b" />
-  <title>TSAR BOMBA — Built for More</title>
   <meta name="description" content="A cinematic scroll-driven luxury watch experience." />
+  <title>AURELIS — The Architecture of Time</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -13,103 +13,67 @@
 </head>
 <body>
   <header class="nav">
-    <a class="brand" href="#top" aria-label="TSAR BOMBA home">
-      <span class="brand-mark">TB</span>
-      <span>TSAR BOMBA</span>
-    </a>
-    <nav class="nav-links">
-      <a href="#craft">Craft</a>
-      <a href="#movement">Movement</a>
-      <a href="#specs">Specifications</a>
-    </nav>
+    <a class="brand" href="#top" aria-label="Aurelis home"><span class="brand-mark">A</span><span>AURELIS</span></a>
+    <nav class="nav-links"><a href="#craft">Craft</a><a href="#movement">Movement</a><a href="#specs">Specifications</a></nav>
     <a class="nav-cta" href="#contact">Discover</a>
   </header>
 
   <main id="top">
     <section class="hero-scroll" aria-label="Scroll-driven watch presentation">
       <div class="hero-sticky">
-        <div class="hero-glow glow-one"></div>
-        <div class="hero-glow glow-two"></div>
+        <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
         <div class="grid-floor"></div>
 
         <div class="hero-copy">
-          <p class="eyebrow">AUTOMATIC SKELETON · LIMITED SERIES</p>
-          <h1>Built for<br><em>More.</em></h1>
-          <p class="hero-lead">A mechanical sculpture engineered to turn every second into a statement.</p>
-          <div class="scroll-hint"><span></span> Scroll to dismantle</div>
+          <p class="eyebrow">AUTOMATIC · LIMITED SERIES</p>
+          <h1>Time,<br><em>revealed.</em></h1>
+          <p class="hero-lead">A mechanical object presented frame by frame. Scroll to move through its transformation and see every detail.</p>
+          <div class="scroll-hint"><span></span><span id="scrollHintText">Scroll to explore</span></div>
         </div>
 
-        <div class="watch-stage" aria-hidden="true">
+        <div class="watch-stage">
           <div class="watch-aura"></div>
-          <img id="assembled" class="watch assembled" src="assets/watch-assembled.svg" alt="" />
-          <img id="exploded" class="watch exploded" src="assets/watch-exploded.svg" alt="" />
-          <div class="stage-caption" id="stageCaption">
-            <span>01</span>
-            ASSEMBLED FORM
-          </div>
+          <canvas id="watchCanvas" aria-label="Animated luxury watch"></canvas>
+          <div class="loading" id="loading"><span></span><b>Loading the mechanism</b><small id="loadingText">0%</small></div>
+          <div class="stage-caption" id="stageCaption"><span>01</span> OPENING FRAME</div>
         </div>
 
-        <div class="progress-rail">
-          <div class="progress-track"><span id="progressBar"></span></div>
-          <div class="progress-label"><span id="progressPercent">0</span>%</div>
-        </div>
+        <div class="progress-rail"><div class="progress-track"><span id="progressBar"></span></div><div class="progress-label"><span id="progressPercent">0</span>%</div></div>
       </div>
     </section>
 
     <section class="intro-band" id="craft">
-      <div>
-        <p class="eyebrow">THE OBJECT</p>
-        <h2>Luxury you can<br><em>see working.</em></h2>
-      </div>
-      <p>Every layer exists for a reason. The case, skeleton dial and automatic movement are composed as one architectural object—then revealed piece by piece as you move through the experience.</p>
+      <div><p class="eyebrow">THE OBJECT</p><h2>Luxury you can<br><em>watch move.</em></h2></div>
+      <p>Designed as a visual journey through the watch itself. The scroll-controlled sequence keeps the object centered while the surrounding interface stays quiet, precise and editorial.</p>
     </section>
 
     <section class="feature" id="movement">
-      <div class="feature-image">
-        <img src="assets/watch-assembled.svg" alt="Rose-gold and blue skeleton luxury watch" loading="lazy" />
-      </div>
+      <div class="feature-image"><div class="feature-orbit"></div><div class="mini-watch">AURELIS</div></div>
       <div class="feature-copy">
-        <p class="eyebrow">MECHANICAL HEART</p>
-        <h2>Precision, exposed.</h2>
-        <p>The skeleton construction puts the mechanical character front and center. Blue bridges frame the moving gear train while the rose-gold architecture gives the case its unmistakable presence.</p>
-        <div class="stat-grid">
-          <div><strong>32</strong><span>Jewels</span></div>
-          <div><strong>1</strong><span>Automatic calibre</span></div>
-          <div><strong>∞</strong><span>Mechanical motion</span></div>
-        </div>
+        <p class="eyebrow">MECHANICAL HEART</p><h2>Precision, exposed.</h2>
+        <p>The hero animation becomes the product story: frame-by-frame movement, controlled pacing and a smooth transition from assembled beauty to mechanical detail.</p>
+        <div class="stat-grid"><div><strong>24</strong><span>Frames / second</span></div><div><strong>144</strong><span>Hero frames</span></div><div><strong>01</strong><span>Continuous story</span></div></div>
       </div>
     </section>
 
     <section class="specs" id="specs">
-      <div class="section-head">
-        <p class="eyebrow">SPECIFICATIONS</p>
-        <h2>The architecture<br><em>of time.</em></h2>
-      </div>
+      <div class="section-head"><p class="eyebrow">SPECIFICATIONS</p><h2>The architecture<br><em>of time.</em></h2></div>
       <div class="spec-list">
-        <div><span>Case</span><strong>Rose-gold tone / tonneau</strong></div>
-        <div><span>Dial</span><strong>Open-work skeleton</strong></div>
-        <div><span>Strap</span><strong>Deep-blue integrated rubber</strong></div>
-        <div><span>Movement</span><strong>Automatic mechanical</strong></div>
-        <div><span>Presentation</span><strong>Exploded X-axis construction</strong></div>
+        <div><span>Construction</span><strong>Precision mechanical case</strong></div>
+        <div><span>Presentation</span><strong>Scroll-scrubbed cinematic sequence</strong></div>
+        <div><span>Interface</span><strong>Minimal editorial navigation</strong></div>
+        <div><span>Motion</span><strong>144-frame / 24 FPS source sequence</strong></div>
+        <div><span>Experience</span><strong>Responsive desktop and mobile layout</strong></div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="contact-card">
-        <p class="eyebrow">TSAR BOMBA</p>
-        <h2>Wear the<br><em>mechanism.</em></h2>
-        <p>Designed for people who want the engineering to be part of the aesthetic.</p>
-        <a class="button" href="#top">Replay the experience <span>↗</span></a>
-      </div>
-    </section>
+    <section class="contact" id="contact"><div class="contact-card">
+      <p class="eyebrow">AURELIS</p><h2>Own the<br><em>moment.</em></h2>
+      <p>Replay the cinematic watch sequence from the beginning.</p>
+      <a class="button" href="#top">Replay experience <span>↗</span></a>
+    </div></section>
   </main>
-
-  <footer>
-    <span>TSAR BOMBA</span>
-    <span>BUILT FOR MORE</span>
-    <span>© 2026</span>
-  </footer>
-
+  <footer><span>AURELIS</span><span>THE ARCHITECTURE OF TIME</span><span>© 2026</span></footer>
   <script src="script.js"></script>
 </body>
 </html>
