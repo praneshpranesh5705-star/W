@@ -1,66 +1,91 @@
 (() => {
-  const hero = document.querySelector('.hero-scroll');
-  const assembled = document.querySelector('#assembled');
-  const exploded = document.querySelector('#exploded');
-  const progressBar = document.querySelector('#progressBar');
-  const progressPercent = document.querySelector('#progressPercent');
-  const stageCaption = document.querySelector('#stageCaption');
+  const FRAME_COUNT = 144;
+  const FRAME_PATH = i => `assets/frames/frame_${String(i + 1).padStart(6, "0")}.jpg`;
+  const hero = document.querySelector(".hero-scroll");
+  const canvas = document.querySelector("#watchCanvas");
+  const ctx = canvas.getContext("2d", { alpha: true });
+  const progressBar = document.querySelector("#progressBar");
+  const progressPercent = document.querySelector("#progressPercent");
+  const caption = document.querySelector("#stageCaption");
+  const loading = document.querySelector("#loading");
+  const loadingText = document.querySelector("#loadingText");
+  const hint = document.querySelector("#scrollHintText");
+  const frames = new Array(FRAME_COUNT);
+  let loaded = 0, target = 0, current = 0, displayed = -1, raf = 0;
 
-  let target = 0;
-  let current = 0;
-  let raf = 0;
-
-  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-  const ease = t => t * t * (3 - 2 * t);
-  const lerp = (a,b,t) => a + (b-a)*t;
-
-  function getProgress() {
-    const rect = hero.getBoundingClientRect();
-    const max = hero.offsetHeight - window.innerHeight;
-    return clamp(-rect.top / max, 0, 1);
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.round(rect.width * dpr));
+    canvas.height = Math.max(1, Math.round(rect.height * dpr));
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    if (displayed >= 0) drawFrame(displayed);
   }
 
+  function drawFrame(index) {
+    const img = frames[index];
+    if (!img || !img.complete || !img.naturalWidth) return;
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    ctx.clearRect(0,0,w,h);
+    const scale = Math.min(w / img.naturalWidth, h / img.naturalHeight);
+    const dw = img.naturalWidth * scale, dh = img.naturalHeight * scale;
+    ctx.drawImage(img, (w-dw)/2, (h-dh)/2, dw, dh);
+    displayed = index;
+  }
+
+  function loadFrame(i) {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = FRAME_PATH(i);
+      img.onload = async () => {
+        try { await img.decode(); } catch {}
+        frames[i] = img; loaded++;
+        loadingText.textContent = Math.round(loaded / FRAME_COUNT * 100) + "%";
+        resolve();
+      };
+      img.onerror = () => resolve();
+    });
+  }
+
+  async function preload() {
+    const concurrency = 8;
+    let cursor = 0;
+    async function worker() {
+      while (cursor < FRAME_COUNT) {
+        const i = cursor++;
+        await loadFrame(i);
+      }
+    }
+    await Promise.all(Array.from({length: concurrency}, worker));
+    loading.style.opacity = "0";
+    setTimeout(() => loading.remove(), 600);
+    drawFrame(0);
+  }
+
+  function getProgress() {
+    const r = hero.getBoundingClientRect();
+    return Math.max(0, Math.min(1, -r.top / Math.max(1, hero.offsetHeight - innerHeight)));
+  }
+
+  const smooth = t => t*t*(3-2*t);
   function render() {
-    current = lerp(current, target, 0.085);
+    current += (target-current) * 0.105;
     const p = current;
-
-    // Phase 1: premium assembled hero.
-    const rotate = lerp(0, -80, ease(clamp(p / 0.42, 0, 1)));
-    const assembledFade = 1 - ease(clamp((p - 0.42) / 0.18, 0, 1));
-    const assembledScale = lerp(1, 0.93, ease(clamp(p / 0.55, 0, 1)));
-    const xShift = lerp(0, -12, ease(clamp(p / 0.55, 0, 1)));
-
-    assembled.style.transform =
-      `translate3d(${xShift}%, 0, 0) rotateY(${rotate}deg) scale(${assembledScale})`;
-    assembled.style.opacity = assembledFade;
-
-    // Phase 2: exploded X-axis reveal.
-    const e = ease(clamp((p - 0.42) / 0.42, 0, 1));
-    const explodedScale = lerp(.82, 1, e);
-    const explodedY = lerp(35, 0, e);
-    exploded.style.transform =
-      `translate3d(0, ${explodedY}px, 0) scale(${explodedScale})`;
-    exploded.style.opacity = e;
+    const index = Math.min(FRAME_COUNT - 1, Math.round(smooth(p) * (FRAME_COUNT - 1)));
+    if (index !== displayed) drawFrame(index);
 
     const pct = Math.round(p * 100);
-    progressBar.style.height = `${pct}%`;
+    progressBar.style.height = pct + "%";
     progressPercent.textContent = pct;
+    if (p < .25) caption.innerHTML = "<span>01</span> ASSEMBLED FORM";
+    else if (p < .5) caption.innerHTML = "<span>02</span> ROTATION";
+    else if (p < .78) caption.innerHTML = "<span>03</span> MECHANICAL REVEAL";
+    else caption.innerHTML = "<span>04</span> FULL DETAIL";
+    hint.textContent = p > .92 ? "Experience complete" : "Scroll to explore";
 
-    if (p < .28) {
-      stageCaption.innerHTML = '<span>01</span> ASSEMBLED FORM';
-    } else if (p < .55) {
-      stageCaption.innerHTML = '<span>02</span> ROTATION';
-    } else if (p < .88) {
-      stageCaption.innerHTML = '<span>03</span> EXPLODED AXIS';
-    } else {
-      stageCaption.innerHTML = '<span>04</span> EVERY PART, VISIBLE';
-    }
-
-    if (Math.abs(target - current) > 0.0005) {
-      raf = requestAnimationFrame(render);
-    } else {
-      raf = 0;
-    }
+    if (Math.abs(target-current) > .0005) raf = requestAnimationFrame(render);
+    else raf = 0;
   }
 
   function onScroll() {
@@ -68,7 +93,9 @@
     if (!raf) raf = requestAnimationFrame(render);
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
+  addEventListener("scroll", onScroll, {passive:true});
+  addEventListener("resize", resizeCanvas);
+  resizeCanvas();
   onScroll();
+  preload();
 })();
