@@ -21,3 +21,7 @@ a{color:inherit;text-decoration:none}.nav{position:fixed;z-index:50;inset:0 0 au
 footer{padding:28px 5vw;display:flex;justify-content:space-between;color:#666a72;font-size:10px;letter-spacing:.15em;border-top:1px solid var(--line)}
 @media(max-width:900px){.nav-links{display:none}.nav{height:68px;padding:0 5vw}.hero-copy{top:13%;left:7vw;width:72vw}.hero-copy h1{font-size:62px}.hero-lead{font-size:13px;margin:18px 0}.watch-aura{width:100vw;height:100vw}#watchCanvas{width:94vw;max-height:72vh;margin-top:12vh}.stage-caption{right:7vw;bottom:9vh}.progress-rail{right:3vw}.intro-band,.feature{grid-template-columns:1fr;gap:50px}.intro-band{padding-top:24vw}.feature-image{min-height:420px}.feature-orbit{width:75vw}.spec-list div{grid-template-columns:1fr;gap:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Cinematic assembly motion */
+#watchCanvas{transition:filter .35s ease;transform-origin:center center;will-change:transform;}
+.watch-stage:after{content:"";position:absolute;width:min(48vw,680px);height:1px;left:50%;bottom:17%;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#c8a16b55,transparent);opacity:.45}
