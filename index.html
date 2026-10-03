@@ -1,79 +1,70 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#08090b" />
-  <meta name="description" content="A cinematic scroll-driven luxury watch experience." />
-  <title>AURELIS — The Architecture of Time</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="AURELIS — an original scroll-driven mechanical watch experience.">
+<title>AURELIS — Chronos 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="nav">
-    <a class="brand" href="#top" aria-label="Aurelis home"><span class="brand-mark">A</span><span>AURELIS</span></a>
-    <nav class="nav-links"><a href="#craft">Craft</a><a href="#movement">Movement</a><a href="#specs">Specifications</a></nav>
-    <a class="nav-cta" href="#contact">Discover</a>
-  </header>
+<header class="nav">
+  <a class="brand" href="#top"><span class="mark">A</span><span>AURELIS</span></a>
+  <nav><a href="#story">Story</a><a href="#craft">Craft</a><a href="#specs">Specs</a></nav>
+  <a class="pill" href="#specs">Chronos 01</a>
+</header>
 
-  <main id="top">
-    <section class="hero-scroll" aria-label="Scroll-driven watch presentation">
-      <div class="hero-sticky">
-        <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
-        <div class="grid-floor"></div>
+<main id="top">
+<section class="hero-scroll">
+  <div class="hero">
+    <div class="noise"></div><div class="orb orb-a"></div><div class="orb orb-b"></div>
+    <div class="copy">
+      <p class="kicker">AUTOMATIC / CHRONOS 01</p>
+      <h1>Time,<br><i>taken apart.</i></h1>
+      <p class="lead">A new mechanical watch concept built as a cinematic scroll experience. Start with the finished timepiece, then reveal its architecture.</p>
+      <div class="hint"><span></span><b id="hint">SCROLL TO EXPLORE</b></div>
+    </div>
 
-        <div class="hero-copy">
-          <p class="eyebrow">AUTOMATIC · LIMITED SERIES</p>
-          <h1>Time,<br><em>revealed.</em></h1>
-          <p class="hero-lead">A mechanical object presented frame by frame. Scroll to move through its transformation and see every detail.</p>
-          <div class="scroll-hint"><span></span><span id="scrollHintText">Scroll to explore</span></div>
-        </div>
+    <div class="watch-wrap">
+      <div class="halo"></div>
+      <canvas id="watch" aria-label="Interactive mechanical watch animation"></canvas>
+      <div class="stage-label"><span id="stageNo">01</span><strong id="stageText">THE TIMEPIECE</strong></div>
+    </div>
 
-        <div class="watch-stage">
-          <div class="watch-aura"></div>
-          <canvas id="watchCanvas" aria-label="Animated luxury watch"></canvas>
-          <div class="loading" id="loading"><span></span><b>Loading the mechanism</b><small id="loadingText">0%</small></div>
-          <div class="stage-caption" id="stageCaption"><span>01</span> OPENING FRAME</div>
-        </div>
+    <div class="rail"><div class="track"><span id="bar"></span></div><span id="pct">0%</span></div>
+  </div>
+</section>
 
-        <div class="progress-rail"><div class="progress-track"><span id="progressBar"></span></div><div class="progress-label"><span id="progressPercent">0</span>%</div></div>
-      </div>
-    </section>
+<section class="statement" id="story">
+  <div><p class="kicker">THE IDEA</p><h2>Beauty is<br><i>built in layers.</i></h2></div>
+  <p>Chronos 01 turns the familiar luxury-watch reveal into an interactive object study. Scroll forward to separate the case, dial, hands and movement. Scroll back and every part returns to its original position.</p>
+</section>
 
-    <section class="intro-band" id="craft">
-      <div><p class="eyebrow">THE OBJECT</p><h2>Luxury you can<br><em>watch move.</em></h2></div>
-      <p>Designed as a visual journey through the watch itself. The scroll-controlled sequence keeps the object centered while the surrounding interface stays quiet, precise and editorial.</p>
-    </section>
+<section class="craft" id="craft">
+  <div class="craft-visual"><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><span>CHRONOS<br>01</span></div>
+  <div class="craft-copy"><p class="kicker">MECHANICAL HEART</p><h2>Precision,<br><i>made visible.</i></h2><p>The animation is generated in the browser rather than played from a fixed video. Every frame is calculated from scroll progress, giving the experience a continuous, reversible motion.</p>
+    <div class="stats"><div><b>01</b><span>ORIGINAL CONCEPT</span></div><div><b>360°</b><span>VISUAL MOVEMENT</span></div><div><b>∞</b><span>REPLAYABLE</span></div></div>
+  </div>
+</section>
 
-    <section class="feature" id="movement">
-      <div class="feature-image"><div class="feature-orbit"></div><div class="mini-watch">AURELIS</div></div>
-      <div class="feature-copy">
-        <p class="eyebrow">MECHANICAL HEART</p><h2>Precision, exposed.</h2>
-        <p>The hero animation becomes the product story: frame-by-frame movement, controlled pacing and a smooth transition from assembled beauty to mechanical detail.</p>
-        <div class="stat-grid"><div><strong>24</strong><span>Frames / second</span></div><div><strong>144</strong><span>Hero frames</span></div><div><strong>01</strong><span>Continuous story</span></div></div>
-      </div>
-    </section>
+<section class="specs" id="specs">
+  <div class="section-head"><p class="kicker">SPECIFICATIONS</p><h2>The architecture<br><i>of time.</i></h2></div>
+  <div class="rows">
+    <div><span>Case</span><b>Brushed steel / sapphire profile</b></div>
+    <div><span>Movement</span><b>Open mechanical concept</b></div>
+    <div><span>Interaction</span><b>Scroll-scrubbed assembly sequence</b></div>
+    <div><span>Animation</span><b>Real-time Canvas rendering</b></div>
+    <div><span>Responsive</span><b>Desktop, tablet and mobile</b></div>
+  </div>
+</section>
 
-    <section class="specs" id="specs">
-      <div class="section-head"><p class="eyebrow">SPECIFICATIONS</p><h2>The architecture<br><em>of time.</em></h2></div>
-      <div class="spec-list">
-        <div><span>Construction</span><strong>Precision mechanical case</strong></div>
-        <div><span>Presentation</span><strong>Scroll-scrubbed cinematic sequence</strong></div>
-        <div><span>Interface</span><strong>Minimal editorial navigation</strong></div>
-        <div><span>Motion</span><strong>144-frame / 24 FPS source sequence</strong></div>
-        <div><span>Experience</span><strong>Responsive desktop and mobile layout</strong></div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact"><div class="contact-card">
-      <p class="eyebrow">AURELIS</p><h2>Own the<br><em>moment.</em></h2>
-      <p>Replay the cinematic watch sequence from the beginning.</p>
-      <a class="button" href="#top">Replay experience <span>↗</span></a>
-    </div></section>
-  </main>
-  <footer><span>AURELIS</span><span>THE ARCHITECTURE OF TIME</span><span>© 2026</span></footer>
-  <script src="script.js"></script>
+<section class="end"><p class="kicker">AURELIS</p><h2>Own the<br><i>moment.</i></h2><a class="button" href="#top">REPLAY EXPERIENCE <span>↗</span></a></section>
+</main>
+<footer><span>AURELIS</span><span>CHRONOS 01</span><span>© 2026</span></footer>
+<script src="script.js"></script>
 </body>
 </html>
